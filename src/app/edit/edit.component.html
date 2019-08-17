@@ -1,0 +1,8 @@
+<div>
+  <input class="input" type="text" placeholder="Логин" [(ngModel)]="login"/><br/>
+  <input class="input" type="password" placeholder="Пароль" [(ngModel)]="password" /><br/>
+  <input class="input" type="text" placeholder="Имя" [(ngModel)]="name" /><br/>
+  <input class="input" type="text" placeholder="Почта" [(ngModel)]="email" /><br/>
+  {{error}}<br/>
+  <button pButton (click)="edit()">Edit info</button>
+</div>

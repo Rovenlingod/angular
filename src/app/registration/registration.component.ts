@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../users/user.service';
+import {User, UserService} from '../users/user.service';
 import {RegistrationService} from './registration.service';
 import {Router} from '@angular/router';
 
@@ -17,9 +17,12 @@ export class RegistrationComponent implements OnInit {
   error: string;
   response: string;
 
-  constructor(private registrationService: RegistrationService, private router: Router) { }
+  constructor(private userService: UserService, private registrationService: RegistrationService, private router: Router) { }
 
   ngOnInit() {
+    if (this.userService.currentUser() !== null) {
+      this.router.navigate(['/allUsers']);
+    }
   }
 
   register() {
@@ -27,7 +30,7 @@ export class RegistrationComponent implements OnInit {
       this.error = 'Please fill the form';
       return;
     }
-    this.registrationService.registerUser(new User(this.login, this.name, this.email, this.password)).subscribe();
+    this.registrationService.registerUser(new User('-1', this.login, this.name, this.email, this.password)).subscribe();
     this.login = '';
     this.password = '';
     this.name = '';

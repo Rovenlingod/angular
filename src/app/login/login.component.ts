@@ -20,6 +20,9 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    if (this.userService.currentUser() !== null) {
+      this.router.navigate(['/allUsers']);
+    }
   }
 
   auth() {
@@ -32,12 +35,12 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.temp = this.login;
-    this.user = new User(this.login, '-1', '-1', this.password);
+    this.user = new User('-1', this.login, '-1', '-1', this.password);
     this.loginService.authUser(this.user).subscribe(e => {
       this.response = e.body.toString();
-      if (this.response === 'true') {
+      if (this.response !== 'null') {
         console.log(this.temp);
-        this.userService.login(this.temp);
+        this.userService.login(this.response);
         this.router.navigate(['/allUsers']);
       } else {
         this.error = 'Wrong login or password';

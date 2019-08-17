@@ -11,11 +11,14 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import {LoginService} from './login/login.service';
 import {RegistrationService} from './registration/registration.service';
+import { EditComponent } from './edit/edit.component';
+import {EditService} from './edit/edit.service';
 
 const routes = [
   {path: 'allUsers', component: UsersComponent},
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
+  {path: 'edit', component: EditComponent},
   { path: '**', redirectTo: 'allUsers' }
 ];
 
@@ -24,13 +27,14 @@ const routes = [
     AppComponent,
     UsersComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    EditComponent
   ],
   imports: [
     RouterModule.forRoot(routes), HttpClientModule, FormsModule,
     BrowserModule
   ],
-  providers: [UserService, LoginService, RegistrationService],
+  providers: [UserService, LoginService, RegistrationService, EditService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

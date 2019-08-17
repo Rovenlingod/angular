@@ -3,12 +3,14 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 export class User {
+  public id: string;
   public login: string;
   public name: string;
   public email: string;
   public password: string;
 
-  constructor(login: string, name: string, email: string, password: string) {
+  constructor(id: string, login: string, name: string, email: string, password: string) {
+    this.id = id;
     this.login = login;
     this.name = name;
     this.email = email;
@@ -22,16 +24,16 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  login(login: string) {
+  login(id: string) {
     // console.log(login.toString());
     // console.log(JSON.stringify({token: Math.random(), name: login}));
-    localStorage.setItem('currentUser', JSON.stringify({token: Math.random(), name: login}));
+    localStorage.setItem('currentUser', JSON.stringify({token: Math.random(), name: id}));
   }
   logOut() {
     return localStorage.removeItem('currentUser');
   }
   currentUser() {
-    console.log(JSON.parse(localStorage.getItem('currentUser')));
+    // console.log(JSON.parse(localStorage.getItem('currentUser')));
     return JSON.parse(localStorage.getItem('currentUser'));
   }
   showAllUsers(): Observable<any> {
