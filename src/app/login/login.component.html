@@ -1,0 +1,7 @@
+<div>
+  <input class="input" type="text" placeholder="Логин" [(ngModel)]="login" /><br/>
+  <input class="input" type="password" placeholder="Пароль" [(ngModel)]="password" /><br/>
+  {{error}}<br/>
+  {{response}}<br/>
+  <button pButton (click)="auth()">Log in</button>
+</div>

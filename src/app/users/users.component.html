@@ -1,0 +1,13 @@
+<div>
+  <p>Здарова {{login}}</p>
+  <tr *ngFor="let u of users; let i = index;">
+    <td>
+      {{u.login}}
+      {{u.password}}
+      {{u.name}}
+      {{u.email}}
+    </td>
+  </tr>
+  <button pButton (click)="logOut()">Log out</button>
+</div>
+
