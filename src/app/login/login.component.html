@@ -1,7 +1,8 @@
 <div>
   <input class="input" type="text" placeholder="Логин" [(ngModel)]="login" /><br/>
   <input class="input" type="password" placeholder="Пароль" [(ngModel)]="password" /><br/>
-  {{error}}<br/>
+  <blockquote>{{error}}</blockquote><br/>
   {{response}}<br/>
-  <button pButton (click)="auth()">Log in</button>
+  <button class="btn waves-effect waves-light" type="submit" name="action" (click)="auth()" >Log in</button>
+  <button class="btn waves-effect waves-light" type="submit" name="action" (click)="register()" >Register</button>
 </div>

@@ -3,6 +3,7 @@
   <input class="input" type="password" placeholder="Пароль" [(ngModel)]="password" /><br/>
   <input class="input" type="text" placeholder="Имя" [(ngModel)]="name" /><br/>
   <input class="input" type="text" placeholder="Почта" [(ngModel)]="email" /><br/>
-  {{error}}<br/>
-  <button pButton (click)="edit()">Edit info</button>
+  <blockquote>{{error}}</blockquote><br/>
+  <button class="btn waves-effect waves-light" type="submit" name="action" (click)="edit()" >Edit</button>
+  <button class="btn waves-effect waves-light" type="submit" name="action" (click)="cancel()" >Cancel</button>
 </div>

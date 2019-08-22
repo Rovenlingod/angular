@@ -1,13 +1,32 @@
 <div>
-  <p>Здарова {{login}}</p>
-  <tr *ngFor="let u of users; let i = index;">
-    <td>
-      {{u.login}}
-      {{u.password}}
-      {{u.name}}
-      {{u.email}}
-    </td>
-  </tr>
-  <button pButton (click)="logOut()">Log out</button>
+  <button class="btn waves-effect waves-light" type="submit" name="action" (click)="logOut()" >Log out</button>
+  <button class="btn waves-effect waves-light" type="submit" name="action" (click)="toEdit()" >Edit</button>
+  <blockquote>Filters:</blockquote>
+  <input class="input" type="text" placeholder="Login" [(ngModel)]="searchLogin"/><br/>
+  <input class="input" type="text" placeholder="Name" [(ngModel)]="searchName"/><br/>
+  <input class="input" type="text" placeholder="Email" [(ngModel)]="searchEmail"/><br/>
+  <table class="table table-bordered table-hover table-striped">
+    <tr>
+      <th>Login</th>
+      <th>Password</th>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+    <tr *ngFor="let u of users | search: searchLogin:searchName:searchEmail">
+      <td>
+        {{u.login}}
+      </td>
+      <td>
+        <div *ngIf="login == u.id">{{ u.password }}</div>
+        <div *ngIf="login != u.id">********</div>
+      </td>
+      <td>
+        {{ u.name }}
+      </td>
+      <td>
+        {{ u.email }}
+      </td>
+    </tr>
+  </table>
 </div>
 

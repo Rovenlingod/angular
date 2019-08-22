@@ -11,10 +11,13 @@ import {LoginService} from '../login/login.service';
 export class UsersComponent implements OnInit {
   users: Array<any>;
   login: string;
+  searchLogin = '';
+  searchName = '';
+  searchEmail = '';
   constructor(private userService: UserService, private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
-    if (this.userService.currentUser() === null){
+    if (this.userService.currentUser() === null) {
       this.router.navigate(['/login']);
     } else {
       this.login = this.userService.currentUser().name;
@@ -24,5 +27,8 @@ export class UsersComponent implements OnInit {
   logOut() {
     this.userService.logOut();
     this.router.navigate(['/login']);
+  }
+  toEdit() {
+    this.router.navigate(['/edit']);
   }
 }

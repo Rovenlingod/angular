@@ -10,6 +10,6 @@ export class EditService {
 
   constructor(private http: HttpClient) { }
   edit(user: User): Observable <any> {
-    return this.http.post('http://localhost:8080/edit', user);
+    return this.http.post('http://localhost:8080/edit', user, {observe: 'response', responseType: 'text'});
   }
 }

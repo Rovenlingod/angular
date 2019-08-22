@@ -25,15 +25,12 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   login(id: string) {
-    // console.log(login.toString());
-    // console.log(JSON.stringify({token: Math.random(), name: login}));
     localStorage.setItem('currentUser', JSON.stringify({token: Math.random(), name: id}));
   }
   logOut() {
     return localStorage.removeItem('currentUser');
   }
   currentUser() {
-    // console.log(JSON.parse(localStorage.getItem('currentUser')));
     return JSON.parse(localStorage.getItem('currentUser'));
   }
   showAllUsers(): Observable<any> {

@@ -13,6 +13,7 @@ import {LoginService} from './login/login.service';
 import {RegistrationService} from './registration/registration.service';
 import { EditComponent } from './edit/edit.component';
 import {EditService} from './edit/edit.service';
+import {SearchPipe} from './users/search.pipe';
 
 const routes = [
   {path: 'allUsers', component: UsersComponent},
@@ -28,7 +29,8 @@ const routes = [
     UsersComponent,
     RegistrationComponent,
     LoginComponent,
-    EditComponent
+    EditComponent,
+    SearchPipe
   ],
   imports: [
     RouterModule.forRoot(routes), HttpClientModule, FormsModule,

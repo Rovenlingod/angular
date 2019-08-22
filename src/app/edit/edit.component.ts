@@ -31,18 +31,28 @@ export class EditComponent implements OnInit {
   }
 
   edit() {
-    // console.log(this.login, this.password, this.email, this.name);
-    // console.log(this.userService.currentUser().name);
     if (this.login === '' && this.password === '' && this.name === '' && this.email === '') {
       this.error = 'Please fill at least something';
       return;
     }
     this.user = new User(this.userService.currentUser().name, this.login, this.name, this.email, this.password);
-    this.editService.edit(this.user).subscribe();
+    this.editService.edit(this.user).subscribe(e => {
+      this.response = e.body.toString();
+      if (this.response === 'LOGIN') {
+        this.error = 'login is taken';
+      } else if (this.response === 'EMAIL') {
+        this.error = 'email is taken';
+      } else {
+        this.router.navigate(['/allUsers']);
+      }
+    });
     this.login = '';
     this.password = '';
     this.name = '';
     this.email = '';
     this.error = '';
+  }
+  cancel() {
+    this.router.navigate(['/allUsers']);
   }
 }

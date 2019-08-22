@@ -1,8 +1,10 @@
 <div>
-  <input class="input" type="text" placeholder="Логин" [(ngModel)]="login"/><br/>
-  <input class="input" type="password" placeholder="Пароль" [(ngModel)]="password" /><br/>
-  <input class="input" type="text" placeholder="Имя" [(ngModel)]="name" /><br/>
-  <input class="input" type="text" placeholder="Почта" [(ngModel)]="email" /><br/>
-  {{error}}<br/>
-  <button pButton (click)="register()">Register</button>
+  <input class="input" type="text" placeholder="Login" [(ngModel)]="login"/><br/>
+  <input class="input" type="password" placeholder="Password" [(ngModel)]="password" /><br/>
+  <input class="input" type="password" placeholder="Repeat password" [(ngModel)]="repeatPassword" /><br/>
+  <input class="input" type="text" placeholder="Name" [(ngModel)]="name" /><br/>
+  <input class="input" type="text" placeholder="Email" [(ngModel)]="email" /><br/>
+  <blockquote>{{error}}</blockquote><br/>
+  <button class="btn waves-effect waves-light" type="submit" name="action" (click)="register()" >Register</button>
+  <button class="btn waves-effect waves-light" type="submit" name="action" (click)="cancel()" >Cancel</button>
 </div>

@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     this.user = new User('-1', this.login, '-1', '-1', this.password);
     this.loginService.authUser(this.user).subscribe(e => {
       this.response = e.body.toString();
-      if (this.response !== 'null') {
+      if (this.response !== '-1') {
         console.log(this.temp);
         this.userService.login(this.response);
         this.router.navigate(['/allUsers']);
@@ -49,5 +49,9 @@ export class LoginComponent implements OnInit {
     this.login = '';
     this.password = '';
     this.error = '';
+  }
+
+  register() {
+    this.router.navigate(['/registration']);
   }
 }

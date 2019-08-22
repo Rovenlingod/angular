@@ -9,7 +9,9 @@ import {Observable} from 'rxjs';
 export class RegistrationService {
 
   constructor(private http: HttpClient) { }
+
   registerUser(user: User): Observable <any> {
-    return this.http.post('http://localhost:8080/registration', user);
+    return this.http.post('http://localhost:8080/registration', user, {observe: 'response', responseType: 'text'});
   }
+
 }
